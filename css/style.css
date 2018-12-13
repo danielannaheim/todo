@@ -1,0 +1,135 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    color: #4d4d4d;
+    background: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+h1 {
+    text-align: center;
+    padding: 10px;
+    font-size: 6.25rem;
+    color: #af2f2f;
+    font-weight: lighter;
+}
+
+
+
+#wrapper {
+    width: 600px;
+    height: auto;
+    background: white;
+    box-shadow: 0px 0px 16px -1px rgba(122,122,122,1);
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
+
+#search {
+    width: 100%;
+    height: auto;
+    box-shadow: inset 0px 0px 6px -1px rgba(122,122,122,0.4);
+    display: flex;
+    flex-direction: row;
+}
+
+.arrow-down {
+    width: 60px;
+    height: 60px;
+    background: url(../img/arrow-round-down.png) center center no-repeat;
+    opacity: 0.2;
+}
+
+input[type='text'] {
+    width: 540px;
+    height: 60px;
+    border: none;
+    padding: 20px;
+    font-size: 16px;
+    background: transparent;
+}
+
+
+
+
+
+
+#todos {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.bullet {
+    width: 100%;
+    height: 60px;
+    border-top: 1px solid #ededed;
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+
+input[type='checkbox'] {
+    visibility: hidden;
+}
+.checkbox {
+    width: 60px;
+    height: 60px;
+    position: relative;
+}
+.checkbox label {
+    cursor: pointer;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 10px;
+    left: 10px;
+    background: url(../img/checkbox-empty.svg);
+}
+.checkbox input[type='checkbox']:checked + label {
+    background: url(../img/checkbox-done.svg);
+}
+
+
+
+
+
+.bullet-text {
+    padding: 20px;
+    width: 480px;
+    height: 60px;
+}
+
+.close-bullet {
+    width: 60px;
+    height: 60px;
+    border: none;
+    background: url(../img/close.svg) center center no-repeat;
+    transform: scale(0.3);
+    cursor: pointer;
+}
+
+
+
+#items-left {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    border-top: 1px solid #ededed;
+}
