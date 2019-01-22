@@ -6,6 +6,7 @@
     <title>todos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+    <script src="js/toggle-todos.js"></script>
 </head>
 <body>
 
@@ -14,29 +15,29 @@
     <div class="todos__wrapper">
 
       <div class="todos__search">
-        <button id="todos__arrow"></button>
+        <button class="todos__arrow"></button>
         <input class="todos__input" type="text" placeholder="What needs to be done?">
       </div>
 
-      <ul id="todos__list">
+      <ul class="todos__list">
         <li>
           <input type="checkbox" id="todos__checkbox-0">
             <label for="todos__checkbox-0">
-              <span>Milch</span>
+              <span>Responsive Design und Flexbox repetieren</span>
             </label>
           <button class="todos__close"></button>
         </li>
         <li>
           <input type="checkbox" id="todos__checkbox-1">
             <label for="todos__checkbox-1">
-              <span>Brot</span>
+              <span>Mit Sass umsetzen</span>
             </label>
           <button class="todos__close"></button>
         </li>
         <li>
           <input type="checkbox" id="todos__checkbox-2">
             <label for="todos__checkbox-2">
-              <span>Zucker</span>
+              <span>Git repetieren</span>
             </label>
           <button class="todos__close"></button>
         </li>
@@ -52,28 +53,7 @@
     
 
     <script>
-
-
-      var arrowdown = document.getElementById("todos__arrow");
-
-      arrowdown.onclick = function() {
-
-        arrowdown.classList.toggle('todos__arrow--active');
-        var list = document.getElementById("todos__list");
-        if (!list.style.height) {
-          list.style.height = list.scrollHeight + "px";
-        } else {
-          list.style.height = null;
-        }
-
-
-
-
-
-
-
-      }
-    
+      toggle_todos();
     </script>
 
 </body>
