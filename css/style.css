@@ -19,7 +19,7 @@ body {
 
 h1 {
     text-align: center;
-    padding: 10px;
+    padding: 0.3em;
     font-size: 6.25rem;
     color: #af2f2f;
     font-weight: lighter;
@@ -68,14 +68,14 @@ h1 {
 
 .todos__search {
     width: 100%;
-    height: auto;
+    height: 60px;
     box-shadow: inset 0px 0px 6px -1px rgba(122,122,122,0.4);
     display: flex;
+    flex-direction: row;
 }
 
 .todos__arrow {
-    width: 60px;
-    height: 60px;
+    flex: 1;
     background: url(../img/arrow-round-down.png) center center no-repeat;
     opacity: 0.2;
     cursor: pointer;
@@ -89,11 +89,10 @@ h1 {
 }
 
 .todos__input {
-    width: 540px;
-    height: 60px;
+    flex: 9;
     border: none;
-    padding: 20px;
-    font-size: 16px;
+    padding: 1em;
+    font-size: 1em;
     background: transparent;
 }
 
@@ -115,47 +114,39 @@ h1 {
 
 .todos__list li {
     display: flex;
-    align-items: center;
+    flex-direction: row;
+    height: 60px;
 }
 
 input[type="checkbox"] {
-    visibility: hidden;
-    width: 60px;
-    height: 60px;
+    display: none;
 }
 
 label {
     cursor: pointer;
-    width: 60px;
-    height: 60px;
-    margin-left: -60px;
-    margin-right: 474px;
-    background: url(../img/checkbox-empty.svg) center center / cover;
+    flex: 1;
+    background: url(../img/checkbox-empty.svg) center center no-repeat;
 }
 
 span {
-    width: 100%;
-    height: 60px;
+    flex: 8;
     display: block;
-    margin-left: 60px;
-    padding: 20px;
+    padding: 1.3em;
 }
 
 input[type="checkbox"]:checked + label {
-    background: url(../img/checkbox-done.svg) center center / cover;
+    background: url(../img/checkbox-done.svg) center center no-repeat;
 }
 
-input[type="checkbox"]:checked + label > span {
+input[type="checkbox"]:checked + label + span {
     text-decoration: line-through;
 }
 
 .todos__close {
-    align-self: flex-end;
-    width: 60px;
-    height: 60px;
     border: none;
+    flex: 1;
     background: url(../img/close.svg) center center no-repeat;
-    transform: scale(0.4);
+    transform: scale(0.3);
     cursor: pointer;
 }
 
@@ -164,6 +155,6 @@ input[type="checkbox"]:checked + label > span {
 .todos__items {
     width: 100%;
     height: auto;
-    padding: 20px;
+    padding: 1em;
     border-top: 1px solid #ededed;
 }
