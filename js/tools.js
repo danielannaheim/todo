@@ -9,12 +9,6 @@ var Tools = (function() {
             }
         };
     };
-    
-    
-    
-    var removeElement = function(element) {
-        element.parentNode.removeChild(element);
-    };
 
 
 
@@ -96,7 +90,6 @@ var Tools = (function() {
     
     return { 
         delegate: delegate,
-        removeElement: removeElement,
         toggleClass: toggleClass,
         styleHeightArrow: styleHeightArrow,
         styleHeight: styleHeight,
