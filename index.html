@@ -6,7 +6,6 @@
     <title>todos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
-    <script src="js/toggle-todos.js"></script>
 </head>
 <body>
 
@@ -42,16 +41,25 @@
       </ul>
 
       <div class="todos__items">
-        <p>3 items left</p>
+        <span></span>
+        <form id="show">      
+          <fieldset>      
+              <legend>Show:</legend>      
+              <input type="radio" id="all" name="show-todos" value="all" checked>
+              <label for="show-todos">All</label>      
+              <input type="radio" id="open" name="show-todos" value="open">
+              <label for="show-todos">Open Todos</label>      
+              <input type="radio" id="done" name="show-todos" value="done">
+              <label for="show-todos">Done Todos</label>     
+          </fieldset>
+      </form>
       </div>
 
     </div>
 
     
 
-    <script>
-      toggle_todos();
-    </script>
-
+    <script src="js/tools.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>

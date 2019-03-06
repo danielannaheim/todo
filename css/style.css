@@ -84,7 +84,7 @@ h1 {
     transition: transform 0.4s ease-in-out;
 }
 
-.todos__arrow--active {
+.todos__arrow.--active {
     transform: rotate(-180deg);
 }
 
@@ -157,4 +157,28 @@ input[type="checkbox"]:checked + label + span {
     height: auto;
     padding: 1em;
     border-top: 1px solid #ededed;
+}
+
+.todos__items span {
+    width: 100%;
+    height: auto;
+    padding: 10px 0px;
+}
+
+.todos__items fieldset {
+    border: 1px solid #e0e0e0;
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+}
+
+.todos__items input[type="radio"] {
+    margin: 5px;
+    cursor: pointer;
+}
+
+.todos__items label {
+    margin: 5px;
+    background: none;
+    cursor: default;
 }
