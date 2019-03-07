@@ -71,7 +71,7 @@ var App = (function(t) {
 
 
         todosInput.addEventListener('keydown', function(event) {
-            if (event.key === "Enter") {
+            if (event.key === "Enter" && todosInput.value !== "") {
                 var dataArray = [];
                 var dataArray = t.getLocalStorage('daTodos');
                 dataArray.push({check:"false",text:todosInput.value});
