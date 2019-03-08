@@ -38,36 +38,7 @@ var App = (function(t) {
         }));
 
 
-        todo_list.addEventListener('click', t.delegate('li input', function(event) {
-            var posNumber = event.target.id.split('-');
-            var posNumber = posNumber[1];
 
-            if (event.target.checked === true) {
-                var currentArray = t.getLocalStorage('daTodos');
-                currentArray[posNumber].check = "true";
-            } else {
-                var currentArray = t.getLocalStorage('daTodos');
-                currentArray[posNumber].check = "false";
-            }
-            t.setLocalStorage('daTodos', currentArray);
-
-            if (document.querySelector('#all').checked) {
-                t.renderList(todo_list, t.getLocalStorage('daTodos'));
-                t.styleHeight(todo_list);
-                t.itemsLeft(itemsLeftSection, t.getLocalStorage('daTodos'));
-                return;
-            } else if (document.querySelector('#open').checked) {
-                var todos = "false";
-            } else if (document.querySelector('#done').checked) {
-                var todos = "true";
-            } else {
-                console.log('what?');
-            }
-
-            t.renderList(todo_list, t.todosShown(t.getLocalStorage('daTodos'), 'check', todos));
-            t.styleHeight(todo_list);
-            t.itemsLeft(itemsLeftSection, t.todosShown(t.getLocalStorage('daTodos'), 'check', todos));
-        }));
 
 
         todosInput.addEventListener('keydown', function(event) {
@@ -97,7 +68,52 @@ var App = (function(t) {
         });
 
 
-        todo_list.addEventListener('click', t.delegate('li .todos__close', function(event) {
+
+        todo_list.addEventListener('click', function(event) {
+            if (event.target.matches('li .todos__close')) {
+                removeElement(event);
+            } else if (event.target.matches('li input')) {
+                TodoOrDone(event);
+            } else if (event.target.matches('li .todos__up')) {
+                moveElement(event, "up");
+            } else if (event.target.matches('li .todos__down')) {
+                moveElement(event, "down");
+            }
+          });
+
+
+
+          function TodoOrDone(event) {
+            var posNumber = event.target.id.split('-');
+            var posNumber = posNumber[1];
+
+            if (event.target.checked === true) {
+                var currentArray = t.getLocalStorage('daTodos');
+                currentArray[posNumber].check = "true";
+            } else {
+                var currentArray = t.getLocalStorage('daTodos');
+                currentArray[posNumber].check = "false";
+            }
+            t.setLocalStorage('daTodos', currentArray);
+
+            if (document.querySelector('#all').checked) {
+                t.renderList(todo_list, t.getLocalStorage('daTodos'));
+                t.styleHeight(todo_list);
+                t.itemsLeft(itemsLeftSection, t.getLocalStorage('daTodos'));
+                return;
+            } else if (document.querySelector('#open').checked) {
+                var todos = "false";
+            } else if (document.querySelector('#done').checked) {
+                var todos = "true";
+            }
+            t.renderList(todo_list, t.todosShown(t.getLocalStorage('daTodos'), 'check', todos));
+            t.styleHeight(todo_list);
+            t.itemsLeft(itemsLeftSection, t.todosShown(t.getLocalStorage('daTodos'), 'check', todos));
+        }
+
+
+
+        function removeElement(event) {
             var dataArray = t.getLocalStorage('daTodos');
             dataArray.splice(event.target.parentNode.id, 1);
             t.setLocalStorage('daTodos', dataArray);
@@ -111,13 +127,37 @@ var App = (function(t) {
                 var todos = "false";
             } else if (document.querySelector('#done').checked) {
                 var todos = "true";
-            } else {
-                console.log('what?');
             }
             t.itemsLeft(itemsLeftSection, t.todosShown(t.getLocalStorage('daTodos'), 'check', todos));
             t.renderList(todo_list, t.todosShown(t.getLocalStorage('daTodos'), 'check', todos));
             t.styleHeight(todo_list);            
-        }));
+        }
+
+
+
+        function moveElement(event, direction) {
+            var index = parseInt(event.target.parentNode.id);
+            var dataArray = t.getLocalStorage('daTodos');
+            var removedElements = dataArray.splice(index, 1);
+            if (direction == "up") {
+                var newIndex = Math.max(0, index - 1);
+            } else if (direction == "down") {
+                var newIndex = Math.max(0, index + 1);
+            }
+            dataArray.splice(newIndex, 0, removedElements[0]);
+            t.setLocalStorage('daTodos', dataArray);
+            if (document.querySelector('#all').checked) {
+                t.renderList(todo_list, t.getLocalStorage('daTodos'));
+                return;
+            } else if (document.querySelector('#open').checked) {
+                var todos = "false";
+            } else if (document.querySelector('#done').checked) {
+                var todos = "true";
+            }
+            t.renderList(todo_list, t.todosShown(t.getLocalStorage('daTodos'), 'check', todos));
+        }
+
+
 
 
 

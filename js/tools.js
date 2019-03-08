@@ -54,6 +54,8 @@ var Tools = (function() {
           li.innerHTML = "<input type='checkbox' id='todos__checkbox-" + index + "' " + check + ">";
           li.innerHTML += "<label for='todos__checkbox-" + index + "'></label>";
           li.innerHTML += "<span>" + element.text + "</span>";
+          li.innerHTML += `<button class='todos__up'></button>`;
+          li.innerHTML += `<button class='todos__down'></button>`;
           li.innerHTML += `<button class='todos__close'></button>`;
           list.appendChild(li);
         });
